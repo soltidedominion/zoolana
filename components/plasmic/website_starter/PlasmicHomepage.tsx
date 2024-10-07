@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { PlasmicHead } from "@plasmicapp/react-web";
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: 5N6kjcjGWipPh4U2CUkv7W/projectcss
@@ -85,6 +87,7 @@ export type PlasmicHomepage__OverridesType = {
   h1?: Flex__<"h1">;
   link?: Flex__<"a"> & Partial<LinkProps>;
   svg?: Flex__<"svg">;
+  pageMetadataOverride?: Flex__<typeof PlasmicHead>;
 };
 
 export interface DefaultHomepageProps {}
@@ -510,6 +513,16 @@ function PlasmicHomepage__RenderFunc(props: {
               </Stack__>
             </div>
           </section>
+          <PlasmicHead
+            data-plasmic-name={"pageMetadataOverride"}
+            data-plasmic-override={overrides.pageMetadataOverride}
+            className={classNames("__wab_instance", sty.pageMetadataOverride)}
+            description={
+              "Looking for zookeepers and animal trainers \ud83d\udc36\ud83d\udc2d\ud83d\udc30\ud83e\udd8a\ud83d\udc3b\ud83d\udc3c\ud83d\udc28\ud83d\udc2e\ud83d\udc38\ud83d\ude49\ud83e\udd84\ud83d\udc33\ud83e\udd9b"
+            }
+            image={"/plasmic/website_starter/images/zoolanaClubPng.png"}
+            title={"Zoo Lana Club"}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -517,13 +530,23 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "columns", "img", "h1", "link", "svg"],
+  root: [
+    "root",
+    "section",
+    "columns",
+    "img",
+    "h1",
+    "link",
+    "svg",
+    "pageMetadataOverride"
+  ],
   section: ["section", "columns", "img", "h1", "link", "svg"],
   columns: ["columns", "img", "h1", "link", "svg"],
   img: ["img"],
   h1: ["h1"],
   link: ["link", "svg"],
-  svg: ["svg"]
+  svg: ["svg"],
+  pageMetadataOverride: ["pageMetadataOverride"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -536,6 +559,7 @@ type NodeDefaultElementType = {
   h1: "h1";
   link: "a";
   svg: "svg";
+  pageMetadataOverride: typeof PlasmicHead;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -604,6 +628,7 @@ export const PlasmicHomepage = Object.assign(
     h1: makeNodeComponent("h1"),
     link: makeNodeComponent("link"),
     svg: makeNodeComponent("svg"),
+    pageMetadataOverride: makeNodeComponent("pageMetadataOverride"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

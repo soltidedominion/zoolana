@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -60,6 +60,11 @@
           "id": "DsP4btDrhcI_",
           "name": "zoolana_club-removebg-preview.png",
           "filePath": "../public/plasmic/website_starter/images/zoolanaClubRemovebgPreviewPng.png"
+        },
+        {
+          "id": "2IMBWmbICokL",
+          "name": "zoolana club.png",
+          "filePath": "../public/plasmic/website_starter/images/zoolanaClubPng.png"
         }
       ],
       "indirect": false,
